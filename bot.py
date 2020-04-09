@@ -20,6 +20,7 @@ class Instargram:
         self.driver.find_elements_by_xpath("//button[contains(text(),'Not Now')]")[0].click()
     def Nav_user(self,user):
         self.driver.get(f"{self.BaseUrl}{user}")
+        print("d")
         time.sleep(2)
     def Follow_user(self,user):
         self.Nav_user(user)
