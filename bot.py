@@ -51,6 +51,7 @@ class Instargram:
             #we need to fig add https to download ssl
     def Download_photo(self,photolist):
         ssl._create_default_https_context = ssl._create_unverified_context
+        
         i = 1
         for urlpic in photolist:
             i += 1
@@ -64,6 +65,8 @@ class Instargram:
 hashtags = input("=== input your tag ===")
 downloadcount = int(input("=== input your downloadcount ==="))
 MYBOT = Instargram("warchag01","Billkyz131")
+
 MYBOT.Login()
 MYBOT.Search_Tag(hashtags)
 MYBOT.Like_photo(downloadcount)
+
