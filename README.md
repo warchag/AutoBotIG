@@ -1,2 +1,1 @@
-# AutoBotIG
-python automation bot for ig
+เขียนด้วย python บอทโหลดรูปภาพ
