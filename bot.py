@@ -35,7 +35,7 @@ class Instargram:
         self.driver.get(f"{self.BaseUrl}explore/tags/{hashtag}")
         time.sleep(2)
 
-    def Like_photo(self,count):
+    def Like_photo(self,count,folderHashtag):
         self.driver.find_element_by_class_name('eLAPa').click()
         i = 1
         img_srcs = []
@@ -48,26 +48,18 @@ class Instargram:
             self.driver.find_element_by_class_name('coreSpriteRightPaginationArrow').click()
             i+=1
             print("===== start to Download_photo======")
-            self.Download_photo(img_srcs)
+            self.Download_photo(img_srcs,folderHashtag)
             #we need to fig add https to download ssl
-    def Download_photo(self,photolist):
+    def Download_photo(self,photolist,folderHashtag):
         ssl._create_default_https_context = ssl._create_unverified_context
         
         i = 1
         for urlpic in photolist:
             i += 1
-            folder_path = './{}'.format("folder")
+            folder_path = './{}'.format(folderHashtag)
             if not os.path.exists(folder_path):
                 os.mkdir(folder_path)
             img_filename = 'image_{}.jpg'.format(i)
-            urllib.request.urlretrieve(urlpic, '{}/{}'.format("folder",img_filename))
+            urllib.request.urlretrieve(urlpic, '{}/{}'.format(folderHashtag,img_filename))
             print(f"Download_photo = {img_filename}")
-
-hashtags = input("=== input your tag ===")
-downloadcount = int(input("=== input your downloadcount ==="))
-MYBOT = Instargram("warchag01","Billkyz131")
-
-MYBOT.Login()
-MYBOT.Search_Tag(hashtags)
-MYBOT.Like_photo(downloadcount)
 
