@@ -4,7 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 import  urllib.request
 import os
-import tensorflow as tf
+import tensorflow as tf2
 class Instargram:
     def __init__(self,username,password):
         self.username = username
