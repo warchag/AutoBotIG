@@ -4,7 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 import  urllib.request
 import os
-import tqdm
 class Instargram:
     def __init__(self,username,password):
         self.username = username
