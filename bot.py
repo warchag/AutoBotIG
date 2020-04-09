@@ -4,7 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 import  urllib.request
 import os
-import tensorflow as tf2
 class Instargram:
     def __init__(self,username,password):
         self.username = username
@@ -47,7 +46,8 @@ class Instargram:
             self.driver.find_element_by_class_name('coreSpriteRightPaginationArrow').click()
             i+=1
             print("===== start to Download_photo======")
-        self.Download_photo(img_srcs)
+            self.Download_photo(img_srcs)
+            #we need to fig add https to download ssl
     def Download_photo(self,photolist):
         i = 1
         for urlpic in photolist:
