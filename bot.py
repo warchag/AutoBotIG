@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 import  urllib.request
 import os
+import ssl
 class Instargram:
     def __init__(self,username,password):
         self.username = username
@@ -49,6 +50,7 @@ class Instargram:
             self.Download_photo(img_srcs)
             #we need to fig add https to download ssl
     def Download_photo(self,photolist):
+        ssl._create_default_https_context = ssl._create_unverified_context
         i = 1
         for urlpic in photolist:
             i += 1
