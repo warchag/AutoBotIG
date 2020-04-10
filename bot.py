@@ -52,7 +52,7 @@ class Instargram:
             #we need to fig add https to download ssl
     def Download_photo(self,photolist,folderHashtag):
         ssl._create_default_https_context = ssl._create_unverified_context
-        
+
         i = 1
         for urlpic in photolist:
             i += 1
@@ -61,5 +61,4 @@ class Instargram:
                 os.mkdir(folder_path)
             img_filename = 'image_{}.jpg'.format(i)
             urllib.request.urlretrieve(urlpic, '{}/{}'.format(folderHashtag,img_filename))
-            print(f"Download_photo = {img_filename}")
-
+            print(f"Download_photos = {img_filename}")
