@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import time
-import  urllib.request
+import urllib.request
 import os
 import ssl
 class Instargram:
@@ -20,7 +20,6 @@ class Instargram:
         self.driver.find_elements_by_xpath("//button[contains(text(),'Not Now')]")[0].click()
     def Nav_user(self,user):
         self.driver.get(f"{self.BaseUrl}{user}")
-        print("d")
         time.sleep(2)
     def Follow_user(self,user):
         self.Nav_user(user)
@@ -30,18 +29,17 @@ class Instargram:
         self.driver.find_elements_by_xpath("//button[contains(text(),'Following')]")[0].click()
         time.sleep(1)
         self.driver.find_elements_by_xpath("//button[contains(text(),'Unfollow')]")[0].click()
-
     def Search_Tag(self,hashtag):
         self.driver.get(f"{self.BaseUrl}explore/tags/{hashtag}")
         time.sleep(2)
-
-    def Like_photo(self,count,folderHashtag):
+    def Like_photo(self,count,folderHashtag,like):
         self.driver.find_element_by_class_name('eLAPa').click()
         i = 1
         img_srcs = []
         while  i <= count:
             time.sleep(1)
-            #self.driver.find_element_by_class_name('wpO6b').click()
+            if like:
+                self.driver.find_element_by_class_name('wpO6b').click() #like
             img_srcs.extend([img.get_attribute('src') for img in self.driver.find_elements_by_class_name('FFVAD')]) # scrape srcs
             img_srcs = list(set(img_srcs))
             time.sleep(0.5)
@@ -52,7 +50,6 @@ class Instargram:
             #we need to fig add https to download ssl
     def Download_photo(self,photolist,folderHashtag):
         ssl._create_default_https_context = ssl._create_unverified_context
-
         i = 1
         for urlpic in photolist:
             i += 1
